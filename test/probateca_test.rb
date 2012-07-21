@@ -11,36 +11,44 @@ class ProbatecaTest < Test::Unit::TestCase
 
   def test_count_total_of_mega_sena
     result   = Probateca.parse(@mega)
-    expected = {
-      41 => 2,
-      5  => 1,
-      4  => 1,
-      52 => 1,
-      30 => 1,
-      33 => 1,
-      9  => 1,
-      39 => 1,
-      37 => 1,
-      49 => 1,
-      43 => 1,
-    }
+    expected = {}
+    1.upto(60) do |n|
+      expected[n] = 0
+    end
+
+    expected[41] = 2
+    expected[5 ] = 1
+    expected[4 ] = 1
+    expected[52] = 1
+    expected[30] = 1
+    expected[33] = 1
+    expected[9 ] = 1
+    expected[39] = 1
+    expected[37] = 1
+    expected[49] = 1
+    expected[43] = 1
+
     assert_equal expected, result
   end
 
   def test_count_total_of_quina
     result = Probateca.parse(@quina)
-    expected = { 
-      25 => 1,
-      45 => 1,
-      60 => 1,
-      76 => 1,
-      79 => 1,
-      13 => 1,
-      30 => 1,
-      58 => 1,
-      63 => 1,
-      64 => 1
-    }
+    expected = {}
+    1.upto(80) do |n|
+      expected[n] = 0
+    end
+
+    expected[25] = 1
+    expected[45] = 1
+    expected[60] = 1
+    expected[76] = 1
+    expected[79] = 1
+    expected[13] = 1
+    expected[30] = 1
+    expected[58] = 1
+    expected[63] = 1
+    expected[64] = 1
+
     assert_equal expected, result
   end
 end
