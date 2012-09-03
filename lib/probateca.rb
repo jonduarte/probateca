@@ -13,15 +13,16 @@ module Probateca
   end
 
   class Parser
+    attr_reader :file
+
     def initialize(file)
       @file = File.read(file)
     end
 
     def lines
-      result = @file.split("\n")
-      result.shift
-      result
+      file.split("\n").drop(1)
     end
+
     def parse_file
       lines.each do |line|
         extract_numbers(line).each do |n|
