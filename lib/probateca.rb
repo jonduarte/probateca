@@ -15,8 +15,10 @@ module Probateca
   class Parser
     attr_reader :file
 
-    def initialize(file)
+    def initialize(file, total)
       @file = File.read(file)
+      @numbers = {}
+      1.upto(total) { |n| @numbers[n] = 0 }
     end
 
     def lines
@@ -35,29 +37,22 @@ module Probateca
 
   class MegaSenaParse < Parser
     def initialize(file)
-      super file
-      @numbers = {}
-      1.upto(60) do |n|
-        @numbers[n] = 0
-      end
+      super file, 60
     end
+
     def extract_numbers(line)
-      line.split("|").slice(2, 6).collect(&:to_i)
+      line.split("\t").slice(2, 6).collect(&:to_i)
     end
   end
-  Probateca.register "mega_sena", MegaSenaParse
+  Probateca.register "megasena", MegaSenaParse
 
   class QuinaParse < Parser
     def initialize(file)
-      super file
-      @numbers = {}
-      1.upto(80) do |n|
-        @numbers[n] = 0
-      end
+      super file, 80
     end
 
     def extract_numbers(line)
-      line.split("|").slice(2, 5).collect(&:to_i)
+      line.split("\t").slice(2, 5).collect(&:to_i)
     end
   end
   Probateca.register "quina", QuinaParse

@@ -5,8 +5,8 @@ require 'test/unit'
 
 class ProbatecaTest < Test::Unit::TestCase
   def setup
-    @mega   = "test/fixtures/mega_sena_simple.mega_sena"
-    @quina  = "test/fixtures/quina_simple.quina"
+    @mega   = "test/fixtures/results.megasena"
+    @quina  = "test/fixtures/results.quina"
   end
 
   def test_count_total_of_mega_sena
